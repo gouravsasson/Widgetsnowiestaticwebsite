@@ -1,0 +1,477 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #481188; /* Main deep violet */
+  --primary-light: #6b3eb0; /* Slightly lighter violet */
+  --primary-dark: #2d085f; /* Darker shade */
+  --accent: #bca8f2; /* Soft lavender tone matching #481188 palette */
+  --surface: #2e0d4f; /* Dark background that complements primary */
+  --surface-alpha: rgba(46, 13, 79, 0.95);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: rgba(0, 0, 0, 0.3);
+  --gradient-primary: linear-gradient(135deg, #481188 0%, #6b3eb0 100%);
+  --gradient-accent: linear-gradient(135deg, #bca8f2 0%, #a388dc 100%);
+  --gradient-surface: linear-gradient(135deg, rgba(46, 13, 79, 0.95) 0%, rgba(70, 35, 120, 0.98) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.301) 0%, rgba(255, 255, 255, 0.301) 100%);
+  --gradient-glow: radial-gradient(circle at center, var(--primary-light) 0%, transparent 70%);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
+.glow-ring {
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(173, 216, 230, 0.25) 0%, transparent 70%);
+  box-shadow:
+    0 0 12px rgba(0, 136, 255, 0.6),
+    0 0 24px rgba(0, 136, 255, 0.4),
+    0 0 36px rgba(0, 136, 255, 0.2);
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-bottom {
+    padding-bottom: var(--safe-bottom);
+  }
+}
+
+@layer components {
+  .widget-container {
+    @apply fixed z-[9999] flex flex-col items-end;
+    @apply bottom-0 right-0 sm:bottom-6 sm:right-6;
+    filter: drop-shadow(0 20px 40px rgba(255, 107, 44, 0.15));
+  }
+
+  .chat-window {
+    @apply w-[300px] sm:w-[380px] h-[500px] sm:h-[620px] flex flex-col overflow-hidden transition-all duration-500 ease-out;
+    @apply rounded-t-2xl sm:rounded-[32px];
+    @apply safe-area-bottom;
+    background: var(--gradient-glass);
+
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    box-shadow: 
+      0 25px 50px -12px var(--shadow),
+      0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+      0 8px 24px rgba(0, 0, 0, 0.05);
+    transform-origin: bottom right;
+    animation: slideIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .chat-window.minimized {
+    @apply h-[72px];
+    animation: minimizeWindow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .chat-header {
+    @apply relative flex justify-between items-center;
+    @apply px-3 py-3 sm:px-6 sm:py-4;
+    @apply h-[60px] sm:h-[72px];
+    background: var(--gradient-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .header-logo {
+    @apply flex items-center gap-2 sm:gap-3;
+  }
+
+  .logo-container {
+    @apply flex items-center justify-center relative overflow-hidden;
+    @apply w-8 h-8 sm:w-10 sm:h-10 rounded-full;
+    background: var(--gradient-glass);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    animation: logoFloat 6s ease-in-out infinite;
+  }
+
+  .logo-container::before {
+    content: '';
+    @apply absolute inset-0;
+    background: var(--gradient-glow);
+    opacity: 0.5;
+    animation: rotateLogo 10s linear infinite;
+  }
+
+  .header-title {
+    @apply text-white font-semibold tracking-tight;
+    @apply text-base sm:text-lg;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-controls {
+    @apply flex items-center;
+    @apply gap-1.5 sm:gap-3;
+  }
+
+  .control-button {
+    @apply rounded-full transition-all duration-300;
+    @apply text-white/90 hover:text-white active:scale-95;
+    @apply p-2 sm:p-2.5;
+    @apply touch-manipulation;
+    background: var(--gradient-glass);
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .control-button::before {
+    content: '';
+    @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-300;
+    background: var(--gradient-glow);
+  }
+
+  .control-button:hover::before {
+    opacity: 0.5;
+  }
+
+  .chat-content {
+    @apply flex flex-col flex-1 overflow-y-auto;
+    @apply p-3 sm:p-6;
+    /* @apply bg-gradient-to-b from-orange-50/50 to-white; */
+    height: calc(100% - var(--header-height, 60px));
+  }
+
+  .mic-button-container {
+    @apply relative flex justify-center;
+    @apply mb-3 sm:mb-6;
+    @apply touch-manipulation;
+    perspective: 1000px;
+  }
+
+  .mic-button {
+    @apply relative flex items-center justify-center;
+    @apply w-16 h-16 sm:w-28 sm:h-28 rounded-full;
+    @apply transition-all duration-300 transform;
+    @apply hover:scale-105 active:scale-95;
+    @apply touch-manipulation;
+    background: var(--gradient-primary);
+    box-shadow: 
+      0 20px 40px -10px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+      0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .mic-button.active {
+    @apply scale-110;
+    animation: micPulse 2s infinite;
+    box-shadow: 
+      0 30px 60px -15px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+      0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .mic-button::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: var(--gradient-glow);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mic-button:hover::before {
+    opacity: 0.5;
+  }
+
+  .status-badge {
+    @apply inline-block relative overflow-hidden;
+    @apply px-3 py-2 sm:px-4 sm:py-2;
+    @apply text-xs sm:text-sm font-medium text-center text-primary-dark;
+    @apply mb-3 sm:mb-4 mx-auto;
+    @apply rounded-2xl;
+    background: var(--gradient-surface);
+    border: 1px solid var(--border);
+    box-shadow: 
+      0 8px 16px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    animation: badgeFloat 3s ease-in-out infinite;
+  }
+
+  .status-badge::before {
+    content: '';
+    @apply absolute inset-0;
+    background: var(--gradient-glow);
+    opacity: 0.1;
+    animation: rotateBadge 10s linear infinite;
+  }
+
+  .transcript-container {
+    @apply flex-1 overflow-y-auto scrollbar-hide relative;
+    @apply rounded-xl sm:rounded-2xl;
+    @apply p-3 sm:p-4;
+    @apply mb-3 sm:mb-4;
+    @apply min-h-[100px] sm:min-h-[120px];
+    @apply max-h-[220px] sm:max-h-[280px];
+    background: var(--gradient-surface);
+    border: 1px solid var(--border);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.02),
+      0 8px 16px rgba(255, 107, 44, 0.08);
+  }
+
+  .transcript-container::before {
+    content: '';
+    @apply absolute inset-0 rounded-3xl;
+    background: var(--gradient-glow);
+    opacity: 0.05;
+    animation: pulseTranscript 4s ease-in-out infinite;
+  }
+
+  .transcript-text {
+    @apply text-gray-800 leading-relaxed relative;
+  }
+
+  .input-container {
+    @apply flex items-center sticky bottom-0;
+    @apply gap-2;
+    @apply p-2 sm:p-3;
+    @apply rounded-full;
+    @apply mt-auto;
+    background: var(--gradient-surface);
+    border: 1px solid var(--border);
+    box-shadow: 
+      0 8px 16px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .input-container::before {
+    content: '';
+    @apply absolute inset-0;
+    background: var(--gradient-glow);
+    opacity: 0.05;
+    animation: pulseInput 4s ease-in-out infinite;
+  }
+
+  .message-input {
+    @apply flex-1 transition-all duration-300;
+    @apply px-3 py-2 sm:px-4 sm:py-2.5;
+    @apply rounded-full text-xs sm:text-sm;
+    @apply bg-white/80 border border-orange-100/50;
+    @apply text-gray-700 placeholder-gray-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20;
+    backdrop-filter: blur(8px);
+  }
+
+  .send-button {
+    @apply rounded-full transition-all duration-300;
+    @apply p-2 sm:p-2.5;
+    @apply transform hover:scale-105 active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply touch-manipulation;
+    background: var(--gradient-primary);
+    box-shadow: 
+      0 8px 16px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .send-button::before {
+    content: '';
+    @apply absolute inset-0;
+    background: var(--gradient-glow);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .send-button:not(:disabled):hover::before {
+    opacity: 0.5;
+  }
+
+  .floating-button {
+    @apply rounded-full flex items-center justify-center;
+    @apply w-12 h-12 sm:w-14 sm:h-14;
+    @apply transition-all duration-500;
+    @apply transform hover:scale-110 active:scale-95;
+    @apply touch-manipulation;
+    background: var(--gradient-primary);
+    box-shadow: 
+      0 20px 40px -10px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    animation: floatButton 6s ease-in-out infinite;
+  }
+}
+
+.talk-to-luna {
+  @apply text-center text-white font-bold text-sm  rounded-md px-2  py-1;
+  background: var(--gradient-primary);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes minimizeWindow {
+  from {
+    height: 500px;
+    opacity: 1;
+  }
+  to {
+    height: 72px;
+    opacity: 0.95;
+  }
+}
+
+@media (min-width: 640px) {
+  @keyframes minimizeWindow {
+    from {
+      height: 620px;
+      opacity: 1;
+    }
+    to {
+      height: 72px;
+      opacity: 0.95;
+    }
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
+}
+
+@keyframes rotateLogo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateBadge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseTranscript {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.1; }
+}
+
+@keyframes pulseInput {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.1; }
+}
+
+@keyframes micPulse {
+  0%, 100% {
+    transform: scale(1.1) translateY(0);
+    box-shadow: 
+      0 20px 40px -10px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.15) translateY(-2px);
+    box-shadow: 
+      0 30px 60px -15px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes badgeFloat {
+  0%, 100% { 
+    transform: translateY(0); 
+    box-shadow: 
+      0 8px 16px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+  50% { 
+    transform: translateY(-2px); 
+    box-shadow: 
+      0 12px 24px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes floatButton {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 
+      0 20px 40px -10px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+      0 30px 60px -15px var(--shadow),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+    filter: blur(25px);
+  }
+}
+
+@keyframes glowRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.2;
+    filter: blur(3px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+}
+
+
