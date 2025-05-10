@@ -3,24 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --primary: #58C3FF; /* Frosty blue glow */
-  --primary-light: #9BE5FF; /* Lighter ice blue */
-  --primary-dark: #1E2A38; /* Almost black-blue base */
-  --accent: #FFFFFF; /* Clean white for contrast text */
-  --surface: #0D1117; /* Jet black surface background */
-  --surface-alpha: rgba(13, 17, 23, 0.95); /* For glass background */
-  --glass: rgba(255, 255, 255, 0.06); /* Lighter frost glass */
-  --glass-strong: rgba(255, 255, 255, 0.12);
-  --border: rgba(255, 255, 255, 0.08);
-  --shadow: rgba(0, 0, 0, 0.5);
+  /* Brand Colors */
+  --primary: #93D4FF; /* Frost blue */
+  --primary-light: #D1EDFF; /* Snow glow */
+  --primary-dark: #224B6A; /* Deep ice blue */
 
-  --gradient-primary: linear-gradient(135deg, #58C3FF 0%, #9BE5FF 100%);
-  --gradient-accent: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
-  --gradient-surface: linear-gradient(135deg, rgba(13, 17, 23, 0.95) 0%, rgba(30, 42, 56, 0.98) 100%);
+  /* Accent Colors */
+  --accent: #FFFFFF; /* Pure white */
+  --accent-soft: #E2F2FF; /* Frosted white for subtle contrast */
+
+  /* Surface & Backgrounds */
+  --surface: #000000; /* Main background - black */
+  --surface-deep: #0B0E13; /* Slightly lifted black for glass depth */
+  --surface-alpha: rgba(0, 0, 0, 0.92); /* For glass layers */
+
+  /* Glass Layers */
+  --glass: rgba(255, 255, 255, 0.05); /* subtle frosted overlay */
+  --glass-strong: rgba(255, 255, 255, 0.12); /* for deeper glass */
+
+  /* Borders & Shadows */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.04);
+  --shadow: rgba(0, 0, 0, 0.6);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #93D4FF 0%, #D1EDFF 100%);
+  --gradient-accent: linear-gradient(135deg, #FFFFFF 0%, #EAF9FF 100%);
+  --gradient-surface: linear-gradient(135deg, #0B0E13 0%, #1E2733 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.06) 100%);
-  --gradient-glow: radial-gradient(circle at center, #9BE5FF 0%, transparent 70%);
+  --gradient-glow: radial-gradient(circle at center, #D1EDFF 0%, transparent 70%);
+
+  /* Safe Area */
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
+
 
 
 .glow-ring {
@@ -327,6 +343,17 @@
   @apply text-center text-white font-bold text-sm  rounded-md px-2  py-1;
   background: var(--gradient-primary);
 }
+
+/* .floating-button {
+  /* background: var(--gradient-primary); */
+  /* color: #000; dark text */
+  /* box-shadow: 0 0 20px rgba(147, 212, 255, 0.4); */
+/* } */
+
+/* .talk-to-luna {
+  background: var(--gradient-primary);
+  color: #000;
+} */
 
 @keyframes slideIn {
   from {
