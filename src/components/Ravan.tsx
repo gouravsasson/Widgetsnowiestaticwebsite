@@ -48,17 +48,17 @@ const RavanVoiceAI = () => {
   // Change agent name to Ravan
   useEffect(() => {
     if (status === "disconnected") {
-      setSpeech("Talk To Luna");
+      setSpeech("Talk To Snowie");
     } else if (status === "connecting") {
-      setSpeech("Connecting To Luna");
+      setSpeech("Connecting To Snowie");
     } else if (status === "speaking") {
-      setSpeech("Luna is Speaking");
+      setSpeech("Snowie is Speaking");
     } else if (status === "connected") {
-      setSpeech("Connected To Luna");
+      setSpeech("Connected To Snowie");
     } else if (status === "disconnecting") {
-      setSpeech("Ending Conversation With Luna");
+      setSpeech("Ending Conversation With Snowie");
     } else if (status === "listening") {
-      setSpeech("Luna is Listening");
+      setSpeech("Snowie is Listening");
     }
   }, [status]);
 
@@ -260,7 +260,7 @@ const RavanVoiceAI = () => {
 
   const toggleExpand = () => {
     if (status === "disconnected") {
-      setSpeech("Connecting To Luna");
+      setSpeech("Connecting To Snowie");
       handleMicClick();
     }
     if (session.isSpeakerMuted) {
@@ -465,7 +465,7 @@ const RavanVoiceAI = () => {
             </div>
           </button>
           <div className="talk-to-luna">
-            <p>Talk to Luna</p>
+            <p>Talk to Snowie</p>
           </div>
         </div>
       )}
