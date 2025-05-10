@@ -397,7 +397,7 @@ const RavanVoiceAI = () => {
                     <img
                       src={logo}
                       alt="Ravan AI logo"
-                      className={`w-12 h-12 transition-transform duration-300 ${
+                      className={`w-16 h-16 transition-transform duration-300 ${
                         isRecording ? "scale-110" : ""
                       }`}
                     />
@@ -453,20 +453,20 @@ const RavanVoiceAI = () => {
           )}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center gap-1">
+        <div className=" relative flex flex-col items-center justify-center gap-1">
           <button
             onClick={toggleExpand}
             // disabled={isDisconnecting || isConnecting}
             className="floating-button"
           >
-            <div className="relative">
-              <div className="glow-ring absolute inset-0 z-0"></div>
+            <div className="">
               <img
                 src={logo}
                 alt="Ravan AI logo"
-                className="w-8 h-8 relative z-10"
+                className="w-12 h-12 relative z-10"
               />
             </div>
+            <div className="glow-ring "></div>
           </button>
           <div className="talk-to-luna">
             <p>Talk to Snowie</p>

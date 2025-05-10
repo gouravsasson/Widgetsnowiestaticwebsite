@@ -39,31 +39,57 @@
 
 
 
-.glow-ring {
+.glow-wrapper {
+  position: relative;
+  width: 100px; /* You can customize this */
+  height: 100px;
+}
+
+.center-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0088ff;
   border-radius: 9999px;
+  z-index: 2;
+}
+
+.glow-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 99999px;
   background: radial-gradient(circle, rgba(173, 216, 230, 0.25) 0%, transparent 70%);
   box-shadow:
-    0 0 12px rgba(0, 136, 255, 0.6),
+    0 0 25px rgba(0, 136, 255, 0.6),
     0 0 24px rgba(0, 136, 255, 0.4),
     0 0 36px rgba(0, 136, 255, 0.2);
   animation: pulseGlow 3s infinite ease-in-out;
+  z-index: 1;
 }
 
 
 @keyframes pulseGlow {
   0% {
-    transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0.4;
   }
   50% {
-    transform: scale(1.8);
+    transform: translate(-50%, -50%) scale(1.8);
     opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 0.4;
   }
 }
+
 
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -93,7 +119,6 @@
     @apply rounded-t-2xl sm:rounded-[32px];
     @apply safe-area-bottom;
     background: var(--gradient-glass);
-
     backdrop-filter: blur(20px);
     border: 1px solid var(--border);
     box-shadow: 
