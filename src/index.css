@@ -3,21 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --primary: #481188; /* Main deep violet */
-  --primary-light: #6b3eb0; /* Slightly lighter violet */
-  --primary-dark: #2d085f; /* Darker shade */
-  --accent: #bca8f2; /* Soft lavender tone matching #481188 palette */
-  --surface: #2e0d4f; /* Dark background that complements primary */
-  --surface-alpha: rgba(46, 13, 79, 0.95);
-  --glass: rgba(255, 255, 255, 0.05);
-  --glass-strong: rgba(255, 255, 255, 0.1);
+  --primary: #58C3FF; /* Frosty blue glow */
+  --primary-light: #9BE5FF; /* Lighter ice blue */
+  --primary-dark: #1E2A38; /* Almost black-blue base */
+  --accent: #FFFFFF; /* Clean white for contrast text */
+  --surface: #0D1117; /* Jet black surface background */
+  --surface-alpha: rgba(13, 17, 23, 0.95); /* For glass background */
+  --glass: rgba(255, 255, 255, 0.06); /* Lighter frost glass */
+  --glass-strong: rgba(255, 255, 255, 0.12);
   --border: rgba(255, 255, 255, 0.08);
-  --shadow: rgba(0, 0, 0, 0.3);
-  --gradient-primary: linear-gradient(135deg, #481188 0%, #6b3eb0 100%);
-  --gradient-accent: linear-gradient(135deg, #bca8f2 0%, #a388dc 100%);
-  --gradient-surface: linear-gradient(135deg, rgba(46, 13, 79, 0.95) 0%, rgba(70, 35, 120, 0.98) 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.301) 0%, rgba(255, 255, 255, 0.301) 100%);
-  --gradient-glow: radial-gradient(circle at center, var(--primary-light) 0%, transparent 70%);
+  --shadow: rgba(0, 0, 0, 0.5);
+
+  --gradient-primary: linear-gradient(135deg, #58C3FF 0%, #9BE5FF 100%);
+  --gradient-accent: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
+  --gradient-surface: linear-gradient(135deg, rgba(13, 17, 23, 0.95) 0%, rgba(30, 42, 56, 0.98) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.06) 100%);
+  --gradient-glow: radial-gradient(circle at center, #9BE5FF 0%, transparent 70%);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
