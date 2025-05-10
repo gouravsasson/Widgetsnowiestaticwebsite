@@ -443,9 +443,9 @@ const RavanVoiceAI = () => {
                       status === "disconnected" ||
                       status === "connecting"
                     }
-                    className="send-button"
+                    className="send-button !text-black"
                   >
-                    <Send size={20} className="text-white" />
+                    <Send size={20} className="!text-black" />
                   </button>
                 </div>
               </div>
@@ -466,7 +466,7 @@ const RavanVoiceAI = () => {
                 className="w-8 h-8 md:w-10 md:h-10    z-10"
               />
             </div>
-            {/* <div className="glow-ring "></div>   */}
+            <div className="glow-ring "></div>  
           </button>
           <div className="talk-to-luna">
             <p>Talk to Snowie</p>

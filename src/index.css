@@ -327,7 +327,7 @@
   }
 
   .send-button {
-    @apply rounded-full transition-all duration-300;
+    @apply rounded-full text-black transition-all duration-300;
     @apply p-2 sm:p-2.5;
     @apply transform hover:scale-105 active:scale-95;
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
