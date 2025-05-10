@@ -335,7 +335,7 @@ const RavanVoiceAI = () => {
           <div className="chat-header">
             <div className="header-logo">
               <div className="logo-container">
-                <img src={logo} alt="Ravan AI logo" className="w-10 h-10" />
+                <img src={logo} alt="Ravan AI logo" className="w-8 h-8" />
               </div>
               <span className="header-title text-sm ">Closerx Assistant</span>
             </div>
