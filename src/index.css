@@ -180,7 +180,7 @@
 
   .control-button {
     @apply rounded-full transition-all duration-300;
-    @apply text-white/90 hover:text-white active:scale-95;
+    @apply text-black hover:text-gray-800 active:scale-95;
     @apply p-2 sm:p-2.5;
     @apply touch-manipulation;
     background: var(--gradient-glass);
@@ -190,7 +190,7 @@
 
   .control-button::before {
     content: '';
-    @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-300;
+    @apply absolute inset-0 rounded-full  opacity-0 transition-opacity duration-300;
     background: var(--gradient-glow);
   }
 

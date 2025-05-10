@@ -339,7 +339,7 @@ const RavanVoiceAI = () => {
           <div className="chat-header">
             <div className="header-logo">
               <div className="logo-container">
-                <img src={logo} alt="Ravan AI logo" className="w-10 h-10" />
+                <img src={logo} alt="Ravan AI logo" className="w-6 h-6 md:w-8 md:h-8" />
               </div>
               <span className="header-title text-sm ">Snowie Assistant</span>
             </div>
@@ -356,7 +356,7 @@ const RavanVoiceAI = () => {
                 className="control-button"
                 title={isMinimized ? "Expand" : "Minimize"}
               >
-                <Minimize2 size={18} />
+                <Minimize2 size={18}  />
               </button>
               <button
                 onClick={handleClose}
@@ -397,7 +397,7 @@ const RavanVoiceAI = () => {
                     <img
                       src={logo}
                       alt="Ravan AI logo"
-                      className={`w-18 h-18 transition-transform duration-300 ${
+                      className={`w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 ${
                         isRecording ? "scale-110" : ""
                       }`}
                     />
@@ -463,10 +463,10 @@ const RavanVoiceAI = () => {
               <img
                 src={logo}
                 alt="Ravan AI logo"
-                className="w-16 h-16 relative z-10"
+                className="w-8 h-8 md:w-10 md:h-10    z-10"
               />
             </div>
-            <div className="glow-ring "></div>
+            {/* <div className="glow-ring "></div>   */}
           </button>
           <div className="talk-to-luna">
             <p>Talk to Snowie</p>
