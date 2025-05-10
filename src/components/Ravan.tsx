@@ -339,7 +339,7 @@ const RavanVoiceAI = () => {
           <div className="chat-header">
             <div className="header-logo">
               <div className="logo-container">
-                <img src={logo} alt="Ravan AI logo" className="w-8 h-8" />
+                <img src={logo} alt="Ravan AI logo" className="w-10 h-10" />
               </div>
               <span className="header-title text-sm ">Snowie Assistant</span>
             </div>
@@ -397,7 +397,7 @@ const RavanVoiceAI = () => {
                     <img
                       src={logo}
                       alt="Ravan AI logo"
-                      className={`w-16 h-16 transition-transform duration-300 ${
+                      className={`w-18 h-18 transition-transform duration-300 ${
                         isRecording ? "scale-110" : ""
                       }`}
                     />
@@ -463,7 +463,7 @@ const RavanVoiceAI = () => {
               <img
                 src={logo}
                 alt="Ravan AI logo"
-                className="w-12 h-12 relative z-10"
+                className="w-16 h-16 relative z-10"
               />
             </div>
             <div className="glow-ring "></div>
