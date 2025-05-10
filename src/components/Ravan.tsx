@@ -166,6 +166,8 @@ const RavanVoiceAI = () => {
 
   // Handle mic button click
   const handleMicClick = async () => {
+        setTranscripts(null);
+
     try {
       if (!isListening) {
         setIsGlowing(true);
