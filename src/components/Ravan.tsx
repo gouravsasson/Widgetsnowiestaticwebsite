@@ -466,7 +466,7 @@ const RavanVoiceAI = () => {
                 className="w-8 h-8 md:w-10 md:h-10    z-10"
               />
             </div>
-            {/* <div className="glow-ring "></div>   */}
+            <div className="glow-ring "></div>  
           </button>
           <div className="talk-to-luna">
             <p>Talk to Snowie</p>
