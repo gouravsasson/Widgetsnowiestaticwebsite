@@ -443,9 +443,9 @@ const RavanVoiceAI = () => {
                       status === "disconnected" ||
                       status === "connecting"
                     }
-                    className="send-button"
+                    className="send-button !text-black"
                   >
-                    <Send size={20} className="text-white" />
+                    <Send size={20} className="!text-black" />
                   </button>
                 </div>
               </div>
