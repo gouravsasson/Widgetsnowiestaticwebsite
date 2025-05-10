@@ -143,7 +143,7 @@
   }
 
   .header-title {
-    @apply text-white font-semibold tracking-tight;
+    @apply text-black font-semibold tracking-tight;
     @apply text-base sm:text-lg;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -340,7 +340,7 @@
 }
 
 .talk-to-luna {
-  @apply text-center text-white font-bold text-sm  rounded-md px-2  py-1;
+  @apply text-center text-black font-bold text-sm  rounded-md px-2  py-1;
   background: var(--gradient-primary);
 }
 

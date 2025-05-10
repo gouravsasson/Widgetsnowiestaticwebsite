@@ -166,7 +166,7 @@ const RavanVoiceAI = () => {
 
   // Handle mic button click
   const handleMicClick = async () => {
-        setTranscripts(null);
+    setTranscripts(null);
 
     try {
       if (!isListening) {
@@ -209,8 +209,10 @@ const RavanVoiceAI = () => {
     }
   };
 
-  session.addEventListener("transcripts", (event) => {
-    const alltrans = session.transcripts;
+  session?.addEventListener("transcripts", (event) => {
+    const alltrans = event.target.transcripts;
+    console.log("Transcripts updated: ", session.transcripts);
+    console.log("alltrans", alltrans);
     let Trans = "";
 
     for (let index = 0; index < alltrans.length; index++) {
